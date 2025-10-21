@@ -1,4 +1,5 @@
 Janelas\CadastroProduto.class
+Model\ProdutoTableModel.class
 BD\Conexao.class
 Janelas\CadastroProduto$1.class
 Objetos\Produto.class

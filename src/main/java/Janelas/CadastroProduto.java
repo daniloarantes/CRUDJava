@@ -5,18 +5,21 @@
 package Janelas;
 
 import BD.Conexao;
+import Model.ProdutoTableModel;
 
 /**
  *
  * @author danilo.asilv10
  */
 public class CadastroProduto extends javax.swing.JFrame {
+    ProdutoTableModel modelo = new ProdutoTableModel();
 
     /**
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
         initComponents();
+        jTProdutos.setModel(modelo);
     }
 
     /**
@@ -40,7 +43,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jBAlterar = new javax.swing.JButton();
         jBExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTTabela = new javax.swing.JTable();
+        jTProdutos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -117,7 +120,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTTabela.setModel(new javax.swing.table.DefaultTableModel(
+        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +131,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTTabela);
+        jScrollPane1.setViewportView(jTProdutos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,8 +206,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTDescricao;
+    private javax.swing.JTable jTProdutos;
     private javax.swing.JTextField jTQuantidade;
-    private javax.swing.JTable jTTabela;
     private javax.swing.JTextField jTValor;
     // End of variables declaration//GEN-END:variables
 }
