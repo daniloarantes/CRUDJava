@@ -4,6 +4,8 @@
  */
 package Janelas;
 
+import BD.Conexao;
+
 /**
  *
  * @author danilo.asilv10
