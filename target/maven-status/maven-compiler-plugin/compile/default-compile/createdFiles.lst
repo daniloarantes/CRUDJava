@@ -1,4 +1,5 @@
 BD\Conexao.class
+DAO\ProdutoDAO.class
 Janelas\CadastroProduto$2.class
 Janelas\CadastroProduto$4.class
 Janelas\CadastroProduto$3.class

@@ -4,6 +4,7 @@
  */
 package Model;
 
+import DAO.ProdutoDAO;
 import Objetos.Produto;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,12 @@ import javax.swing.table.AbstractTableModel;
  * @author danilo.asilv10
  */
 public class ProdutoTableModel extends AbstractTableModel {
+
     private List<Produto> dados = new ArrayList<>();
     private String[] colunas = {"Descrição", "Quantidade", "Preço"};
-    
+
     @Override
-    public String getColumnName(int column){
+    public String getColumnName(int column) {
         return colunas[column];
     }
 
@@ -44,21 +46,35 @@ public class ProdutoTableModel extends AbstractTableModel {
         }
         return null;
     }
-    
-    public void addLinha(Produto p){
+
+    public void addLinha(Produto p) {
         this.dados.add(p);
         this.fireTableDataChanged();
     }
-    
-    public void removeLinha(int linha){
+
+    public void removeLinha(int linha) {
         this.dados.remove(linha);
         this.fireTableRowsDeleted(linha, linha);
     }
-    
-    public Produto pegaDadosLinha(int linha){
+
+    public Produto pegaDadosLinha(int linha) {
         return dados.get(linha);
     }
+
+    private void lerDados() {
+        ProdutoDAO pdao = new ProdutoDAO();
+
+        for (Produto p : pdao.read()) {
+            this.addLinha(p);
+        }
+
+        this.fireTableDataChanged();
+    }
     
-    
-    
+    public void recarregaTabela(){
+        this.dados.clear();
+        lerDados();
+        this.fireTableDataChanged();
+    }
+
 }
