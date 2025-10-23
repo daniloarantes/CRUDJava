@@ -6,6 +6,7 @@ package Janelas;
 
 import BD.Conexao;
 import Model.ProdutoTableModel;
+import Objetos.Produto;
 
 /**
  *
@@ -64,10 +65,20 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel4.setText("Valor");
 
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBAlterar.setText("Alterar");
 
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +142,11 @@ public class CadastroProduto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTProdutos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,6 +176,35 @@ public class CadastroProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        Produto p = new Produto();
+        p.setDescricao(jTDescricao.getText());
+        p.setQuantidade(Integer.parseInt(jTQuantidade.getText()));
+        p.setValor(Double.valueOf(jTValor.getText().replace(",", ".")));
+        modelo.addLinha(p);
+        limpaCampos();
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTProdutos.getSelectedRow() != -1) {
+            modelo.removeLinha(jTProdutos.getSelectedRow());
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProdutosMouseClicked
+        if (jTProdutos.getSelectedRow() != -1) {
+            Produto p = modelo.pegaDadosLinha(jTProdutos.getSelectedRow());
+            jTDescricao.setText(p.getDescricao());
+            jTQuantidade.setText(String.valueOf(p.getQuantidade()));
+            jTValor.setText(String.valueOf(p.getValor()));
+        }
+    }//GEN-LAST:event_jTProdutosMouseClicked
+
+    private void limpaCampos(){
+        jTDescricao.setText("");
+        jTQuantidade.setText("");
+        jTValor.setText("");
+    }
     /**
      * @param args the command line arguments
      */

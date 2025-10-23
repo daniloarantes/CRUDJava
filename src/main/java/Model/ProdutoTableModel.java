@@ -33,8 +33,32 @@ public class ProdutoTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Object getValueAt(int linha, int coluna) {
+        switch (coluna) {
+            case 0:
+                return dados.get(linha).getDescricao();
+            case 1:
+                return dados.get(linha).getQuantidade();
+            case 2:
+                return dados.get(linha).getValor();
+        }
+        return null;
     }
+    
+    public void addLinha(Produto p){
+        this.dados.add(p);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeLinha(int linha){
+        this.dados.remove(linha);
+        this.fireTableRowsDeleted(linha, linha);
+    }
+    
+    public Produto pegaDadosLinha(int linha){
+        return dados.get(linha);
+    }
+    
+    
     
 }
