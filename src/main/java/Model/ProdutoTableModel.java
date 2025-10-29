@@ -46,6 +46,22 @@ public class ProdutoTableModel extends AbstractTableModel {
         }
         return null;
     }
+    
+    @Override
+    public void setValueAt(Object valor, int linha, int coluna){
+        switch(coluna){
+            case 0:
+                dados.get(linha).setDescricao((String) valor);
+                break;
+            case 1:
+                dados.get(linha).setQuantidade(Integer.parseInt((String) valor));
+                break;
+            case 2:
+                dados.get(linha).setValor(Double.parseDouble((String) valor));
+                break;
+        }
+        this.fireTableRowsUpdated(linha, linha);
+    }
 
     public void addLinha(Produto p) {
         this.dados.add(p);
