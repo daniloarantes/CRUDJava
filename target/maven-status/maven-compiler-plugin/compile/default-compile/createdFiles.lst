@@ -1,10 +1,13 @@
+Model\UsuarioTableModel.class
 Janelas\CadastroProduto$5.class
-BD\Conexao.class
 DAO\ProdutoDAO.class
-Janelas\CadastroProduto$2.class
+DAO\UsuarioDAO.class
 Janelas\CadastroProduto$4.class
 Janelas\CadastroProduto$3.class
 Janelas\CadastroProduto.class
+Objetos\Usuario.class
+BD\Conexao.class
+Janelas\CadastroProduto$2.class
 Model\ProdutoTableModel.class
 Janelas\CadastroProduto$1.class
 Objetos\Produto.class
