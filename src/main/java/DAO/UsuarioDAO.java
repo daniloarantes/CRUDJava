@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author danilo.asilv10
  */
 public class UsuarioDAO {
-    
+
     public List<Usuario> read() {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
@@ -56,7 +56,7 @@ public class UsuarioDAO {
             stmt = con.prepareStatement("INSERT INTO tbl_usuarios(nome, login, senha, tipo) VALUES (?,?,?,?)");
             stmt.setString(1, u.getNome());
             stmt.setString(2, u.getLogin());
-            stmt.setString(3, u.getSenha());
+            stmt.setString(3, u.getSenhaHash());
             stmt.setString(4, u.getTipo());
 
             stmt.execute();
@@ -111,5 +111,36 @@ public class UsuarioDAO {
         }
 
     }
-    
+
+    public Usuario verificaUsuario(String login) {
+        Connection con = Conexao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM tbl_usuarios WHERE login = ?");
+            stmt.setString(1, login);
+            rs = stmt.executeQuery();
+            Usuario u = new Usuario();
+
+            while (rs.next()) {
+                
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setLogin(rs.getString("login"));
+                u.setSenha(rs.getString("senha"));
+                u.setTipo(rs.getString("tipo"));
+            }
+            return u;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Falha ao obter dados: " + e);
+        } finally {
+            Conexao.closeConnection(con, stmt, rs);
+        }
+
+        return null;
+
+    }
+
 }
