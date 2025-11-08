@@ -188,11 +188,14 @@ public class JanelaUsuarios extends javax.swing.JFrame {
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         Usuario u = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
+       
+        
         
         try {
+            String senhaDigitada = new String(jPSenha.getPassword()); //
+            u.setSenhaHash(senhaDigitada); //
             u.setNome(jTNome.getText());
             u.setLogin(jTLogin.getText());
-            u.setSenhaHash(jPSenha.getPassword().toString());
             u.setTipo(jCTipo.getSelectedItem().toString());
             dao.create(u);
             modelo.recarregaTabela();         

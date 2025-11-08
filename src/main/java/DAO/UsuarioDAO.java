@@ -116,13 +116,13 @@ public class UsuarioDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
+        Usuario u = new Usuario();
 
         try {
             stmt = con.prepareStatement("SELECT * FROM tbl_usuarios WHERE login = ?");
             stmt.setString(1, login);
             rs = stmt.executeQuery();
-            Usuario u = new Usuario();
+            
 
             while (rs.next()) {
                 
