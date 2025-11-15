@@ -125,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         user = dao.verificaUsuario(jTLogin.getText());
         
         if (user.verificarSenha(new String(jPSenha.getPassword()))) { //
-            CadastroProduto cp = new CadastroProduto();
+            CadastroProduto cp = new CadastroProduto(user);
             cp.setVisible(true);
             this.dispose();
         } else {

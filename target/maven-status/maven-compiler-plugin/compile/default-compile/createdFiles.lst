@@ -14,6 +14,7 @@ Objetos\Usuario.class
 BD\Conexao.class
 Janelas\CadastroProduto$2.class
 Janelas\Login.class
+Janelas\JanelaUsuarios$3.class
 Model\ProdutoTableModel.class
 Janelas\CadastroProduto$1.class
 Objetos\Produto.class

@@ -77,6 +77,11 @@ public class JanelaUsuarios extends javax.swing.JFrame {
         jBExcluir.setText("Excluir");
 
         jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
 
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,8 +194,6 @@ public class JanelaUsuarios extends javax.swing.JFrame {
         Usuario u = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
        
-        
-        
         try {
             String senhaDigitada = new String(jPSenha.getPassword()); //
             u.setSenhaHash(senhaDigitada); //
@@ -207,6 +210,10 @@ public class JanelaUsuarios extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     /**
      * @param args the command line arguments
